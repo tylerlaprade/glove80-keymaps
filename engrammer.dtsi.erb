@@ -24,43 +24,93 @@ behaviors {
     //
     //////////////////////////////////////////////////////////////////
 
+    // pinky finger //////////////////////////////////////////////////
+
     //
-    // HOMEY_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
+    // PINKY_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
     // for the pinky, ring, and middle fingers (which are assigned to Super,
     // Alt, and Ctrl respectively in the Miryoku system) on home row keys.
     //
-    #define HOMEY_HOLDING_TYPE "tap-preferred"
+    #define PINKY_HOLDING_TYPE "tap-preferred"
 
     //
-    // HOMEY_HOLDING_TIME defines how long you need to hold (milliseconds)
+    // PINKY_HOLDING_TIME defines how long you need to hold (milliseconds)
     // home row mod keys in order to send their modifiers to the computer
     // (i.e. "register" them) for mod-click mouse usage (e.g. Ctrl-Click).
     //
-    #define HOMEY_HOLDING_TIME 270 // TAPPING_TERM + ALLOW_CROSSOVER_AFTER
+    #define PINKY_HOLDING_TIME 270 // TAPPING_TERM + ALLOW_CROSSOVER_AFTER
 
     //
-    // HOMEY_STREAK_DECAY defines how long you need to wait (milliseconds)
+    // PINKY_STREAK_DECAY defines how long you need to wait (milliseconds)
     // after typing before you can use home row mods again.  It prevents
     // unintended activation of home row mods when you're actively typing.
     //
-    #define HOMEY_STREAK_DECAY 170 // global-quick-tap-ms
+    #define PINKY_STREAK_DECAY 170 // global-quick-tap-ms
+
+    // ring finger ///////////////////////////////////////////////////
 
     //
-    // SHIFT_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
-    // for index fingers (which Miryoku assigns to Shift) on home row keys.
+    // RINGY_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
+    // for the pinky, ring, and middle fingers (which are assigned to Super,
+    // Alt, and Ctrl respectively in the Miryoku system) on home row keys.
+    //
+    #define RINGY_HOLDING_TYPE "tap-preferred"
+
+    //
+    // RINGY_HOLDING_TIME defines how long you need to hold (milliseconds)
+    // home row mod keys in order to send their modifiers to the computer
+    // (i.e. "register" them) for mod-click mouse usage (e.g. Ctrl-Click).
+    //
+    #define RINGY_HOLDING_TIME 270 // TAPPING_TERM + ALLOW_CROSSOVER_AFTER
+
+    //
+    // RINGY_STREAK_DECAY defines how long you need to wait (milliseconds)
+    // after typing before you can use home row mods again.  It prevents
+    // unintended activation of home row mods when you're actively typing.
+    //
+    #define RINGY_STREAK_DECAY 170 // global-quick-tap-ms
+
+    // middle finger /////////////////////////////////////////////////
+
+    //
+    // MIDDY_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
+    // for the pinky, ring, and middle fingers (which are assigned to Super,
+    // Alt, and Ctrl respectively in the Miryoku system) on home row keys.
+    //
+    #define MIDDY_HOLDING_TYPE "tap-preferred"
+
+    //
+    // MIDDY_HOLDING_TIME defines how long you need to hold (milliseconds)
+    // home row mod keys in order to send their modifiers to the computer
+    // (i.e. "register" them) for mod-click mouse usage (e.g. Ctrl-Click).
+    //
+    #define MIDDY_HOLDING_TIME 270 // TAPPING_TERM + ALLOW_CROSSOVER_AFTER
+
+    //
+    // MIDDY_STREAK_DECAY defines how long you need to wait (milliseconds)
+    // after typing before you can use home row mods again.  It prevents
+    // unintended activation of home row mods when you're actively typing.
+    //
+    #define MIDDY_STREAK_DECAY 170 // global-quick-tap-ms
+
+    // index finger //////////////////////////////////////////////////
+
+    //
+    // INDEX_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
+    // for index fingers (which Miryoku assigns to Index) on home row keys.
     //
     // NOTE: The "tap-preferred" flavor of ZMK hold-tap for index finger keys
-    // allows faster activation of the Shift modifier (without having to wait
+    // allows faster activation of the Index modifier (without having to wait
     // for the modified key to be released as the "balanced" flavor requires).
     // Typing streaks and the `hold-trigger-on-release` setting are disabled
     // for the index fingers so as not to hinder their speed and dexterity.
     //
-    #define SHIFT_HOLDING_TYPE "tap-preferred"
+    #define INDEX_HOLDING_TYPE "tap-preferred"
 
     //
-    // SHIFT_HOLDING_TIME defines how long you need to hold (milliseconds)
+    // INDEX_HOLDING_TIME defines how long you need to hold (milliseconds)
     // index finger keys in order to send their modifiers to the computer
-    // (i.e. "register" them) for mod-click mouse usage (e.g. Shift-Click).
+    // (i.e. "register" them) for mod-click mouse usage (e.g. Index-Click).
     //
     // CAUTION: You'll need to perform inward rolls from pinky->ring->middle
     // fingers toward the index fingers when activating multiple modifiers
@@ -69,14 +119,16 @@ behaviors {
     // sent immediately without the rest of your multi-mod chord when you
     // perform outward rolls from your index fingers toward your pinkies.
     //
-    #define SHIFT_HOLDING_TIME 170
+    #define INDEX_HOLDING_TIME 170
 
     //
-    // SHIFT_STREAK_DECAY defines how long you need to wait (milliseconds)
+    // INDEX_STREAK_DECAY defines how long you need to wait (milliseconds)
     // after typing before you can use home row mods again.  It prevents
     // unintended activation of home row mods when you're actively typing.
     //
-    #define SHIFT_STREAK_DECAY 70 // global-quick-tap-ms
+    #define INDEX_STREAK_DECAY 70 // global-quick-tap-ms
+
+    // thumb cluster /////////////////////////////////////////////////
 
     //
     // THUMB_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
@@ -100,6 +152,8 @@ behaviors {
     //
     #define THUMB_REPEAT_DECAY 300 // "tap then hold" for key auto-repeat
 
+    // thumb spacebar ////////////////////////////////////////////////
+
     //
     // SPACE_HOLDING_TIME defines how long you need to hold (milliseconds)
     // the space thumb key to activate.  Shorter holds are treated as taps.
@@ -111,6 +165,8 @@ behaviors {
     // after tapping a key to hold it again in order to make it auto-repeat.
     //
     #define SPACE_REPEAT_DECAY 200 // "tap then hold" for key auto-repeat
+
+    // bilateral combinations ////////////////////////////////////////
 
     //
     // Glove80 key positions index for positional hold-tap
@@ -153,18 +209,18 @@ behaviors {
                           71 54   55 72
 
     //
-    // Home row mod-tap keys for all except index fingers
+    // Miryoku home row mod-tap keys for the pinky fingers
     //
     <%
       HANDS.each do |hand, opposite_hand|
-    %>homey_<%= hand %>: miryoku_home_row_mods_<%= hand %>_hand {
+    %>pinky_<%= hand %>: miryoku_home_row_mods_<%= hand %>_hand_pinky_finger {
         compatible = "zmk,behavior-hold-tap";
-        label = "HOME_ROW_MODS_<%= hand.upcase %>_HAND";
-        flavor = HOMEY_HOLDING_TYPE;
+        label = "HOME_ROW_MODS_<%= hand.upcase %>_HAND_PINKY_FINGER";
+        flavor = PINKY_HOLDING_TYPE;
         hold-trigger-key-positions = <<%= opposite_hand.upcase %>_HAND_KEYS THUMB_KEYS>;
         hold-trigger-on-release; // wait for other home row mods
-        tapping-term-ms = <HOMEY_HOLDING_TIME>;
-        quick-tap-ms = <HOMEY_STREAK_DECAY>;
+        tapping-term-ms = <PINKY_HOLDING_TIME>;
+        quick-tap-ms = <PINKY_STREAK_DECAY>;
         global-quick-tap; // with typing streak
         #binding-cells = <2>;
         bindings = <&kp>, <&kp>;
@@ -174,18 +230,60 @@ behaviors {
     %>
 
     //
-    // Special home row mod-tap keys for the index fingers
+    // Miryoku home row mod-tap keys for the ring fingers
     //
     <%
       HANDS.each do |hand, opposite_hand|
-    %>shift_<%= hand %>: miryoku_home_row_mods_<%= hand %>_shift_shift {
+    %>ringy_<%= hand %>: miryoku_home_row_mods_<%= hand %>_hand_ring_finger {
         compatible = "zmk,behavior-hold-tap";
-        label = "HOME_ROW_MODS_<%= hand.upcase %>_SHIFT_SHIFT";
-        flavor = SHIFT_HOLDING_TYPE;
+        label = "HOME_ROW_MODS_<%= hand.upcase %>_HAND_RING_FINGER";
+        flavor = RINGY_HOLDING_TYPE;
+        hold-trigger-key-positions = <<%= opposite_hand.upcase %>_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <RINGY_HOLDING_TIME>;
+        quick-tap-ms = <RINGY_STREAK_DECAY>;
+        global-quick-tap; // with typing streak
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+    <%
+      end
+    %>
+
+    //
+    // Miryoku home row mod-tap keys for the middle fingers
+    //
+    <%
+      HANDS.each do |hand, opposite_hand|
+    %>middy_<%= hand %>: miryoku_home_row_mods_<%= hand %>_hand_middle_finger {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOME_ROW_MODS_<%= hand.upcase %>_HAND_MIDDLE_FINGER";
+        flavor = MIDDY_HOLDING_TYPE;
+        hold-trigger-key-positions = <<%= opposite_hand.upcase %>_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <MIDDY_HOLDING_TIME>;
+        quick-tap-ms = <MIDDY_STREAK_DECAY>;
+        global-quick-tap; // with typing streak
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+    <%
+      end
+    %>
+
+    //
+    // Miryoku home row mod-tap keys for the index fingers
+    //
+    <%
+      HANDS.each do |hand, opposite_hand|
+    %>index_<%= hand %>: miryoku_home_row_mods_<%= hand %>_hand_index_finger {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOME_ROW_MODS_<%= hand.upcase %>_INDEX";
+        flavor = INDEX_HOLDING_TYPE;
         hold-trigger-key-positions = <<%= opposite_hand.upcase %>_HAND_KEYS THUMB_KEYS>;
         //hold-trigger-on-release; // don't wait for other mods
-        tapping-term-ms = <SHIFT_HOLDING_TIME>;
-        quick-tap-ms = <SHIFT_STREAK_DECAY>;
+        tapping-term-ms = <INDEX_HOLDING_TIME>;
+        quick-tap-ms = <INDEX_STREAK_DECAY>;
         global-quick-tap; // with typing streak
         #binding-cells = <2>;
         bindings = <&kp>, <&kp>;
