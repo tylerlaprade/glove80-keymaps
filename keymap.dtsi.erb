@@ -1230,7 +1230,6 @@ macros {
         #binding-cells = <0>;
         bindings = <&<%= plain %>>, <&<%= morphed %>>;
         mods = <<%= modifiers %>>;
-        keep-mods = <MOD_LSFT>;
     };
     <%
       end
@@ -1485,11 +1484,9 @@ macros {
 
           next_modmask = format_modifiers_keymask(remaining_precedence)
           leaf_modmask = format_modifiers_keymask([
-            "LSFT",
             (modifier if modifier != "base"),
             *remaining_precedence
           ].compact)
-          next_modmask = leaf_modmask
           leaf_wrapper = leaf_id + "_wrapper"
           emit_zmk_mod_morph.(id, leaf_wrapper, next_id, next_modmask)
           emit_zmk_mod_morph.(leaf_wrapper, leaf_id, leaf_id, leaf_modmask)
