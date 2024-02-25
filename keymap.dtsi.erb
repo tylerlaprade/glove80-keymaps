@@ -1464,24 +1464,32 @@ macros {
     // transforms
     //
     <%
+      def format_modifiers_keymask(modifiers)
+        "(" + modifiers.map{ |m| "MOD_#{m}" }.join("|") + ")"
+      end
+
       world["transforms"].each do |letter, transforms|
         id_prefix = letter_id_prefix(:world, letter)
         remaining_precedence = world["precedence"] & transforms.keys
         available_precedence = ["base"] + remaining_precedence
 
         available_precedence.each_cons(2) do |modifier, next_modifier|
-          id        = id_prefix + modifier
-          accent_id = id_prefix + transforms[modifier]
-          next_id   = id_prefix + if remaining_precedence.length > 1
-                                    next_modifier
-                                  else
-                                    transforms[next_modifier]
-                                  end
+          id      = id_prefix + modifier
+          leaf_id = id_prefix + transforms[modifier]
+          next_id = id_prefix + if remaining_precedence.length > 1
+                                  next_modifier
+                                else
+                                  transforms[next_modifier]
+                                end
 
-          next_modifiers = "(#{
-            remaining_precedence.map{ |m| "MOD_#{m}" }.join("|")
-          })"
-          emit_zmk_mod_morph.(id, accent_id, next_id, next_modifiers)
+          next_modmask = format_modifiers_keymask(remaining_precedence)
+          leaf_modmask = format_modifiers_keymask([
+            (modifier if modifier != "base"),
+            *remaining_precedence
+          ].compact)
+          leaf_wrapper = leaf_id + "_wrapper"
+          emit_zmk_mod_morph.(id, leaf_wrapper, next_id, next_modmask)
+          emit_zmk_mod_morph.(leaf_wrapper, leaf_id, leaf_id, leaf_modmask)
           remaining_precedence.shift
         end
       end
