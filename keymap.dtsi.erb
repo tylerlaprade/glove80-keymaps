@@ -1407,7 +1407,11 @@ macros {
     //
     #ifndef COMPOSE_SEQ_WINDOWS
     #define COMPOSE_SEQ_WINDOWS(keystrokes) \
+        /* LALT isn't being registered without the extra delay below! */ \
+        /* which buffers it from the keep-mods=0 masking of mod-morph */ \
+        <&macro_wait_time 300>, \
         <&macro_press &kp LALT>, \
+        <&macro_wait_time UNICODE_SEQ_DELAY>, \
         <&macro_tap keystrokes>, \
         <&macro_release &kp LALT>
     #endif
